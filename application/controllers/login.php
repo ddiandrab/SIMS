@@ -9,7 +9,8 @@ class Login extends CI_Controller{
 	}
 
 	function index(){
-		$this->load->view('v_login');
+		$data['status'] = "trying";
+		$this->load->view('v_login',$data);
 	}
 
   function aksi_login(){
@@ -17,12 +18,18 @@ class Login extends CI_Controller{
 		$password = $this->input->post('password');
     $prodi = $this->input->post('prodi');
 
+		if($prodi == 'Pilih ...'){
+			$this->session->set_flashdata('error', "<center><strong>Gagal Login!</strong> Prodi belum dipilih.</center>");
+			redirect(base_url('index.php/login'));
+		}
+
 		$where = array(
 			'username' => $username,
 			'password' => md5($password)
 			);
 		$cek = $this->m_login->cek_login("admin",$where)->num_rows();
 		if($cek > 0){
+
 
 			$data_session = array(
 				'nama' => $username,
@@ -35,7 +42,8 @@ class Login extends CI_Controller{
 			redirect(base_url("index.php/admin"));
 
 		}else{
-			echo "Username dan password salah !";
+			$this->session->set_flashdata('error', "<center><strong>Gagal Login!</strong> Username / Password yang anda masukkan salah.</center>");
+			redirect(base_url('index.php/login'));
 		}
 	}
 
@@ -43,4 +51,6 @@ class Login extends CI_Controller{
 		$this->session->sess_destroy();
 		redirect(base_url('index.php/login'));
 	}
+
+
 }

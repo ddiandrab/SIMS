@@ -9,11 +9,11 @@
   <meta name="author" content="">
   <title>SIMS - Login</title>
   <!-- Bootstrap core CSS-->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <!-- Custom fonts for this template-->
-  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="<?php echo base_url(); ?>vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Custom styles for this template-->
-  <link href="css/sb-admin.css" rel="stylesheet">
+  <link href="<?php echo base_url(); ?>css/sb-admin.css" rel="stylesheet">
 </head>
 
 <body class="bg-dark">
@@ -35,7 +35,7 @@
             <div class="input-group-prepend">
               <label class="input-group-text" for="prodi">Prodi</label>
             </div>
-            <select class="custom-select" id="prodi" name="prodi">
+            <select class="custom-select" id="prodi" name="prodi" required>
               <option selected>Pilih ...</option>
               <option value="Sosiologi">Sosiologi</option>
               <option value="Ilmu Komunikasi">Ilmu Komunikasi</option>
@@ -49,14 +49,15 @@
 					</div>
           <input type="submit" class="btn btn-info btn-block" value="Login">.
         </form>
+        <?php echo $this->session->flashdata('error'); ?>
       </div>
     </div>
   </div>
   <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<?php echo base_url(); ?>vendor/jquery/jquery.min.js"></script>
+  <script src="<?php echo base_url(); ?>vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="<?php echo base_url(); ?>vendor/jquery-easing/jquery.easing.min.js"></script>
 
 
 
